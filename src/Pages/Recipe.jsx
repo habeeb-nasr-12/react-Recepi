@@ -59,7 +59,7 @@ const Recipe = () => {
         {activeTab === "Ingredients" && (
           <div>
             <ul>
-              {detail.extendedIngredients.map((ingredient) => (
+              {detail?.extendedIngredients?.map((ingredient) => (
                 <li key={ingredient.id}>{ingredient.original}</li>
               ))}
             </ul>
@@ -77,6 +77,7 @@ const DetailWrapper = styled.div`
   img {
     width: 400px;
   }
+
   h2 {
     font-size: 1.2rem;
   }
@@ -94,6 +95,15 @@ const DetailWrapper = styled.div`
   ul {
     margin-top: 2rem;
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    img {
+      width: 300px;
+      margin-bottom: 2rem;
+    }
+  }
 `;
 const Button = styled.button`
   padding: 1rem 2rem;
@@ -102,6 +112,12 @@ const Button = styled.button`
   border: 2px solid black;
   margin-right: 2rem;
   font-weight: 600;
+    @media (max-width: 768px) {
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+
+
+  }
 `;
 const BtnContainer = styled.div`
   display: flex;
@@ -109,5 +125,11 @@ const BtnContainer = styled.div`
 
 const Info = styled.div`
   margin-left: 10rem;
+  @media (max-width: 768px) {
+    margin-left: 0;
+    
+  }
+ 
+  
 `;
 export default Recipe;

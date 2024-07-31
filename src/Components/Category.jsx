@@ -39,10 +39,15 @@ const SLink = styled(NavLink)`
   margin-right: 2rem;
   text-decoration: none;
   background: linear-gradient(35deg, #494949, #313131);
-  width: 4rem;
-  height: 4rem;
+  width: 8rem;
+  height: 8rem;
   cursor: pointer;
   transform: scale(0.8);
+  @media (max-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+    padding: 15px;
+  }
   h4 {
     color: white;
     font-size: 0.65rem;

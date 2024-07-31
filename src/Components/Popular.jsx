@@ -4,7 +4,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { Link } from "react-router-dom";
 const Popular = () => {
-  const [popular, setPopular] = useState([]);
+  const [popular, setPopular] = useState();
   useEffect(() => {
     getPopular();
   }, []);
@@ -27,15 +27,25 @@ const Popular = () => {
       <Wrapper>
         <h3>Popular Picks</h3>
         <Splide
-          options={{
-            perPage: 5,
+           options={{
+            perPage: 3,
             arrows: false,
             pagination: false,
             drag: "free",
             gap: "2rem",
+            breakpoints: {
+              1200: {
+                perPage: 2, // 2 slides per page for screens smaller than 1200px
+                gap: '1.5rem',
+              },
+              768: {
+                perPage: 1, // 1 slide per page for screens smaller than 768px
+                gap: '1rem',
+              },
+            },
           }}
         >
-          {popular.map((recipe) => {
+          {popular?.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>

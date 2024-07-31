@@ -11,7 +11,6 @@ const Veggie = () => {
   }, []);
   const getVeggie = async () => {
     const check = localStorage.getItem("veggie");
-
     if (check) {
       setVeggie(JSON.parse(check));
     } else {
@@ -19,6 +18,7 @@ const Veggie = () => {
         `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&=tags=vegetarian`
       );
       const data = await api.json();
+      console.log(data);
       localStorage.setItem("veggie", JSON.stringify(data.recipes));
       setVeggie(data.recipes);
     }
@@ -34,9 +34,19 @@ const Veggie = () => {
             pagination: false,
             drag: "free",
             gap: "2rem",
+            breakpoints: {
+              1200: {
+                perPage: 2, // 2 slides per page for screens smaller than 1200px
+                gap: "1.5rem",
+              },
+              768: {
+                perPage: 1, // 1 slide per page for screens smaller than 768px
+                gap: "1rem",
+              },
+            },
           }}
         >
-          {veggie.map((recipe) => {
+          {veggie?.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>

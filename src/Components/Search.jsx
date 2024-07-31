@@ -49,5 +49,15 @@ const FromStyle = styled.form`
     transform: translate(100%, -50%);
     color: white;
   }
+
+  @media screen and (max-width: 768px) {
+    margin: 0rem 1rem;
+    div {
+      width: 100%;
+    }
+      input{
+      width: 100%;
+      }
+  }
 `;
 export default Search;
